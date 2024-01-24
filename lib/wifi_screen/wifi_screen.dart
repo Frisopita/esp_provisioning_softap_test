@@ -76,10 +76,10 @@ class _WiFiScreenSoftAPState extends State<WiFiScreenSoftAP> {
         child: ScanList(
           items: state.wifiList,
           icon: Icons.wifi,
-          disableLoading: true,
           onTap: (Map<String, dynamic> item, BuildContext _context) {
             _showDialog(item, _context);
           },
+          disableLoading: true,
         ),
       );
     } else {

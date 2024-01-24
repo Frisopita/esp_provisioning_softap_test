@@ -10,7 +10,7 @@ class ScanList extends StatelessWidget {
   final ItemTapCallback onTap;
   final bool disableLoading;
 
-  const ScanList(List<Map<String, dynamic>> wifiList, IconData wifi, 
+  const ScanList(
       {Key? key,
       required this.items,
       required this.icon,

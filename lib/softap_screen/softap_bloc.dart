@@ -7,7 +7,7 @@ import 'package:esp_provisioning_softap_example/softap_screen/softap_event.dart'
 class SoftApBloc extends Bloc<SoftApEvent,SoftApState> {
   SoftApBloc() : super(SoftApStateLoaded());
 
-  @override
+  
   Stream<SoftApState> mapEventToState(event) async* {
     if (event is SoftApEventStart){
         yield* _mapStartToState();

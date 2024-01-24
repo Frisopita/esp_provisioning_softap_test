@@ -16,7 +16,6 @@ class WiFiBlocSoftAP extends Bloc<WifiEvent, WifiState> {
 
   WiFiBlocSoftAP() : super(WifiStateLoading());
 
-  @override
   Stream<WifiState> mapEventToState(WifiEvent event) async* {
     if (event is WifiEventLoadSoftAP) {
       yield* _mapLoadToState();

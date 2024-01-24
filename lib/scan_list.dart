@@ -10,7 +10,7 @@ class ScanList extends StatelessWidget {
   final ItemTapCallback onTap;
   final bool disableLoading;
 
-  const ScanList(
+  const ScanList(List<Map<String, dynamic>> wifiList, IconData wifi, 
       {Key? key,
       required this.items,
       required this.icon,
@@ -20,7 +20,7 @@ class ScanList extends StatelessWidget {
 
   Widget _buildItem(
       BuildContext _context, Map<String, dynamic> item, IconData icon,
-      {ItemTapCallback onTap}) {
+      {required ItemTapCallback onTap}) {
     return ListTile(
         leading: Container(
           padding: EdgeInsets.all(4.0),
@@ -31,15 +31,13 @@ class ScanList extends StatelessWidget {
         ),
         title: Text(
           item['name'] ?? item['ssid'],
-          style: TextStyle(color: Theme.of(_context).accentColor),
+          style: TextStyle(color: Theme.of(_context).primaryColorLight),
         ),
         trailing: Text(item['rssi'].toString()),
         onTap: () {
           print('tap');
-          if (onTap != null) {
-            onTap(item, _context);
-          }
-        } //showModel(_context, bleDevice),
+          onTap(item, _context);
+                } //showModel(_context, bleDevice),
         );
   }
 
@@ -55,7 +53,7 @@ class ScanList extends StatelessWidget {
                     child: Align(
                         alignment: Alignment.center,
                         child: SpinKitRipple(
-                            color: Theme.of(_context).textSelectionColor)))),
+                            color: Theme.of(_context).primaryColorLight)))),
         Expanded(
             child: ListView.separated(
                 shrinkWrap: true,

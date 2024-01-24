@@ -10,12 +10,11 @@ import 'dart:convert';
 
 class WiFiBlocSoftAP extends Bloc<WifiEvent, WifiState> {
 
-  Provisioning prov;
+  late Provisioning prov;
   Logger log = Logger(printer: PrettyPrinter());
   var softApService = SoftAPService();
 
   WiFiBlocSoftAP() : super(WifiStateLoading());
-
 
   @override
   Stream<WifiState> mapEventToState(WifiEvent event) async* {
@@ -62,8 +61,8 @@ class WiFiBlocSoftAP extends Bloc<WifiEvent, WifiState> {
     List<int> customData = utf8.encode("Some CUSTOM data\0");
     Uint8List customBytes = Uint8List.fromList(customData);
     await prov.sendReceiveCustomData(customBytes);
-    await prov?.sendWifiConfig(ssid: event.ssid, password: event.password);
-    await prov?.applyWifiConfig();
+    await prov.sendWifiConfig(ssid: event.ssid, password: event.password);
+    await prov.applyWifiConfig();
     await Future.delayed(Duration(seconds: 10));
     var connectionStatus = await prov.getStatus();
 
@@ -88,7 +87,7 @@ class WiFiBlocSoftAP extends Bloc<WifiEvent, WifiState> {
 
   @override
   Future<void> close() {
-    prov?.dispose();
+    prov.dispose();
     return super.close();
   }
 }

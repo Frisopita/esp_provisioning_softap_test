@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:esp_provisioning_softap/esp_provisioning_softap.dart';
 
 class SoftAPService {
